@@ -855,6 +855,7 @@
       grid-row: span 2;
     }
     .feat-card {
+      cursor: pointer;
       position: relative;
       padding: 2rem 2.2rem;
       background: var(--ink-card);
@@ -1007,6 +1008,7 @@
       gap: 1.2rem;
     }
     .proj-card {
+      cursor: pointer;
       padding: 1.6rem;
       background: var(--ink-card);
       border: 1px solid var(--border);
@@ -1326,20 +1328,20 @@
 
       <div class="hero-stats">
         <div class="stat-item">
-          <div class="stat-num">17<span>+</span></div>
-          <div class="stat-label">Projects Built</div>
+          <div class="stat-num">20<span>+</span></div>
+          <div class="stat-label">End-to-End Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">400<span>+</span></div>
+          <div class="stat-label">Hours Saved at Amazon</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">500<span>+</span></div>
+          <div class="stat-label">Day Learning Streak</div>
         </div>
         <div class="stat-item">
           <div class="stat-num">6</div>
-          <div class="stat-label">Healthcare to Finance — 6 Industries</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">92<span>%</span></div>
-          <div class="stat-label">Query I/O Reduction (49ms → 1ms)</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">Full</div>
-          <div class="stat-label">Stack — SQL to Cloud BI</div>
+          <div class="stat-label">Domains — Healthcare to Finance</div>
         </div>
       </div>
 
@@ -2132,7 +2134,7 @@
         <p class="body-lead reveal" data-delay="2" style="text-align:center;margin:0 auto 2.5rem;">I'm looking for Data Analyst, BI Developer, and Analytics Engineer roles. If you're building a data team and want someone who can work across the full stack, from building pipelines to communicating findings to the people who need to act on them, I'd genuinely like to hear from you. Reach out directly or connect on LinkedIn.</p>
 
         <div class="reveal" data-delay="3">
-          <a href="/cdn-cgi/l/email-protection#66140f150e0f1507080b0f121407575426010b070f0a4805090b" class="contact-email"><span class="__cf_email__" data-cfemail="98eaf1ebf0f1ebf9f6f5f1eceaf9a9aad8fff5f9f1f4b6fbf7f5">[email&#160;protected]</span></a>
+          <a href="mailto:rishisanmitra12@gmail.com" class="contact-email">rishisanmitra12@gmail.com</a>
         </div>
 
         <div class="contact-links reveal" data-delay="4">
@@ -2284,6 +2286,27 @@
       if (orbC) orbC.style.transform = `translate(0, ${sy * 0.02}px)`;
     }, { passive: true });
 
-  </script>
+  
+    /* ── PROJ-CARD FULL CLICK ───────────────────────────────── */
+    document.addEventListener('DOMContentLoaded', () => {
+      // Proj-cards
+      document.querySelectorAll('.proj-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+          if (e.target.closest('.proj-gh-link')) return;
+          const link = card.querySelector('.proj-gh-link');
+          if (link) window.open(link.href, '_blank', 'noopener');
+        });
+      });
+      // Featured cards
+      document.querySelectorAll('.feat-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function(e) {
+          if (e.target.closest('.feat-link-btn') || e.target.closest('.btn-ghost')) return;
+          const link = card.querySelector('.feat-link-btn');
+          if (link) window.open(link.href, '_blank', 'noopener');
+        });
+      });
+    });
+</script>
 </body>
 </html>
