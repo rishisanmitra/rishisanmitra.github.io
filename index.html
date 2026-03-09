@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rishi Pillutla — Data Analytics Portfolio</title>
+  <meta name="description" content="Data Analyst & BI Developer — Python, SQL, Power BI, Tableau, dbt, Snowflake, BigQuery. End-to-end analytics portfolio." />
+  <meta property="og:title" content="Rishi Pillutla — Data Analytics Portfolio" />
+  <meta property="og:description" content="Data analyst and BI developer with 2+ years of industry experience at Amazon and Medplus. Specializing in SQL, Power BI, Python, dbt, and cloud analytics. 17+ projects across healthcare, SaaS, supply chain, and more." />
+
+  <!-- Fonts: Cormorant Garamond (editorial display) + DM Sans (refined body) + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap" />
+
+  <style>
+    /* =========================================================
+       DESIGN TOKENS
+    ========================================================= */
+    :root {
+      --ink:        #06091A;
+      --ink-mid:    #0B0F22;
+      --ink-card:   #0F1629;
+      --ink-raised: #141C34;
+      --gold:       #C9974A;
+      --gold-hi:    #E8B96A;
+      --gold-lo:    #8A6530;
+      --gold-glow:  rgba(201,151,74,0.15);
+      --gold-rim:   rgba(201,151,74,0.2);
+      --cyan:       #38BDF8;
+      --cyan-dim:   rgba(56,189,248,0.1);
+      --sage:       #4ADE80;
+      --sage-dim:   rgba(74,222,128,0.1);
+      --rose:       #FB7185;
+      --text-1:     #EEE9DF;
+      --text-2:     #7A8BAA;
+      --text-3:     #3D4A62;
+      --border:     rgba(201,151,74,0.1);
+      --border-hi:  rgba(201,151,74,0.35);
+      --ff-disp:    'Cormorant Garamond', Georgia, serif;
+      --ff-body:    'DM Sans', system-ui, sans-serif;
+      --ff-mono:    'JetBrains Mono', monospace;
+      --ease:       cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-out:   cubic-bezier(0, 0, 0.2, 1);
+      --t:          0.35s;
+      --r:          10px;
+      --r-lg:       18px;
+    }
+
+    /* =========================================================
+       BASE
+    ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--ink);
+      color: var(--text-1);
+      font-family: var(--ff-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    ::selection { background: var(--gold); color: var(--ink); }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: none; }
+
+    /* Grain texture overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.5;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--ink-mid); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-lo); border-radius: 2px; }
+
+    /* =========================================================
+       CUSTOM CURSOR
+    ========================================================= */
+    #cursor-dot {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s var(--ease), height 0.2s var(--ease), background 0.2s;
+      mix-blend-mode: normal;
+    }
+    #cursor-ring {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(201,151,74,0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s var(--ease), height 0.3s var(--ease), border-color 0.3s;
+    }
+    body.cursor-hover #cursor-dot {
+      width: 12px; height: 12px;
+      background: var(--gold-hi);
+    }
+    body.cursor-hover #cursor-ring {
+      width: 52px; height: 52px;
+      border-color: rgba(201,151,74,0.8);
+    }
+
+    /* =========================================================
+       NAV
+    ========================================================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 64px;
+      background: rgba(6,9,26,0.8);
+      backdrop-filter: blur(24px) saturate(1.4);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--t) var(--ease), background var(--t) var(--ease);
+    }
+    nav.scrolled {
+      border-bottom-color: var(--border);
+      background: rgba(6,9,26,0.95);
+    }
+    .nav-brand {
+      font-family: var(--ff-mono);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .nav-brand span { color: var(--text-2); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+    }
+    .nav-links a {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      border-radius: 6px;
+      transition: color var(--t) var(--ease), background var(--t) var(--ease);
+      position: relative;
+    }
+    .nav-links a:hover { color: var(--text-1); background: rgba(255,255,255,0.04); }
+    .nav-hire {
+      margin-left: 0.75rem;
+      padding: 0.45rem 1.2rem !important;
+      border: 1px solid var(--gold-rim) !important;
+      color: var(--gold) !important;
+      background: transparent !important;
+      border-radius: var(--r) !important;
+      transition: background var(--t) var(--ease), border-color var(--t) var(--ease), color var(--t) var(--ease) !important;
+    }
+    .nav-hire:hover {
+      background: var(--gold-glow) !important;
+      border-color: var(--gold) !important;
+      color: var(--gold-hi) !important;
+    }
+    .ham {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 6px;
+      cursor: none;
+    }
+    .ham i {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--gold);
+      border-radius: 1px;
+      transition: transform var(--t) var(--ease), opacity var(--t) var(--ease);
+    }
+    .ham.open i:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .ham.open i:nth-child(2) { opacity: 0; }
+    .ham.open i:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 64px 0 0;
+      background: rgba(6,9,26,0.98);
+      backdrop-filter: blur(24px);
+      z-index: 490;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--ff-disp);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--text-1);
+      letter-spacing: 0.03em;
+      transition: color var(--t);
+    }
+    .mobile-nav a:hover { color: var(--gold-hi); }
+
+    /* =========================================================
+       LAYOUT UTILS
+    ========================================================= */
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+    }
+    .sect {
+      padding: clamp(5rem, 9vw, 7.5rem) 0;
+    }
+    .label {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.1rem;
+    }
+    .label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .h2 {
+      font-family: var(--ff-disp);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--text-1);
+      margin-bottom: 1.2rem;
+    }
+    .h2 em { font-style: italic; color: var(--gold-hi); }
+    .body-lead {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      max-width: 620px;
+      line-height: 1.85;
+    }
+    .rule {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-hi), transparent);
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-family: var(--ff-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--text-2);
+      background: var(--ink-card);
+      white-space: nowrap;
+      transition: border-color var(--t), color var(--t), background var(--t);
+    }
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-28px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(28px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    [data-delay="1"] { transition-delay: 0.1s; }
+    [data-delay="2"] { transition-delay: 0.2s; }
+    [data-delay="3"] { transition-delay: 0.3s; }
+    [data-delay="4"] { transition-delay: 0.4s; }
+    [data-delay="5"] { transition-delay: 0.5s; }
+    [data-delay="6"] { transition-delay: 0.6s; }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Ambient grid */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,151,74,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,151,74,0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 20%, transparent 100%);
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 40%, black 20%, transparent 100%);
+    }
+
+    /* Glowing orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+    }
+    .orb-a {
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(201,151,74,0.07) 0%, transparent 70%);
+      top: -200px; left: -100px;
+      animation: float 20s ease-in-out infinite;
+    }
+    .orb-b {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(56,189,248,0.05) 0%, transparent 70%);
+      bottom: -100px; right: 5%;
+      animation: float 16s ease-in-out infinite reverse;
+    }
+    .orb-c {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(74,222,128,0.04) 0%, transparent 70%);
+      top: 60%; right: 30%;
+      animation: float 24s ease-in-out infinite;
+      animation-delay: -8s;
+    }
+    @keyframes float {
+      0%,100% { transform: translate(0,0); }
+      33%      { transform: translate(40px,-30px); }
+      66%      { transform: translate(-20px,40px); }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding-top: 80px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.35rem 0.9rem 0.35rem 0.6rem;
+      border: 1px solid var(--gold-rim);
+      border-radius: 30px;
+      background: rgba(201,151,74,0.06);
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 2.2rem;
+      opacity: 0;
+      animation: fadeUp 0.7s var(--ease-out) 0.2s forwards;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--sage);
+      box-shadow: 0 0 8px var(--sage);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; box-shadow: 0 0 8px var(--sage); }
+      50% { opacity: 0.5; box-shadow: 0 0 4px var(--sage); }
+    }
+
+    .hero-name {
+      font-family: var(--ff-disp);
+      font-size: clamp(4rem, 12vw, 9rem);
+      font-weight: 300;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out) 0.4s forwards;
+    }
+    .hero-name-last {
+      display: block;
+      font-style: italic;
+      color: var(--gold-hi);
+      padding-left: 0.12em;
+    }
+
+    .hero-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border-hi), transparent);
+      margin: 2rem 0 1.8rem;
+      opacity: 0;
+      animation: fadeIn 0.6s var(--ease-out) 0.9s forwards;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: flex-start;
+      gap: 3.5rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 1.1s forwards;
+    }
+    .hero-meta-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-1);
+      line-height: 1.3;
+    }
+    .hero-meta-sub {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      margin-top: 0.3rem;
+    }
+    .hero-meta-divider {
+      width: 1px;
+      height: 50px;
+      background: var(--border);
+      flex-shrink: 0;
+      margin-top: 4px;
+      align-self: center;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 1.3s forwards;
+    }
+    .stat-item { }
+    .stat-num {
+      font-family: var(--ff-disp);
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: var(--gold-hi);
+      line-height: 1;
+    }
+    .stat-num span {
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+    .stat-label {
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      margin-top: 0.3rem;
+    }
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 1.5s forwards;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 2rem;
+      background: var(--gold);
+      color: var(--ink);
+      border-radius: var(--r);
+      font-weight: 600;
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      border: none;
+      transition: background var(--t) var(--ease), transform 0.2s var(--ease), box-shadow var(--t) var(--ease);
+    }
+    .btn-primary:hover {
+      background: var(--gold-hi);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,151,74,0.3);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 2rem;
+      border: 1px solid var(--border-hi);
+      color: var(--text-1);
+      border-radius: var(--r);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: border-color var(--t) var(--ease), background var(--t) var(--ease), transform 0.2s var(--ease);
+    }
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      background: var(--gold-glow);
+      transform: translateY(-2px);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      opacity: 0;
+      animation: fadeIn 1s var(--ease-out) 2s forwards;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--text-2);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+      font-size: 0.97rem;
+    }
+    .about-text p strong { color: var(--text-1); font-weight: 500; }
+    .about-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .about-card {
+      padding: 1.4rem;
+      background: var(--ink-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      transition: border-color var(--t) var(--ease), background var(--t) var(--ease);
+    }
+    .about-card:hover { border-color: var(--gold-rim); background: var(--ink-raised); }
+    .about-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.7rem;
+    }
+    .about-card h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-1);
+      margin-bottom: 0.3rem;
+    }
+    .about-card p {
+      font-size: 0.78rem;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .cert-block {
+      padding: 1.6rem;
+      background: var(--ink-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+    }
+    .cert-block h4 {
+      font-size: 0.7rem;
+      font-family: var(--ff-mono);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cert-item:last-child { border-bottom: none; }
+    .cert-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .cert-icon.ms { background: rgba(0,120,212,0.15); }
+    .cert-icon.dc { background: rgba(201,151,74,0.1); }
+    .cert-name { font-size: 0.86rem; font-weight: 500; color: var(--text-1); }
+    .cert-org { font-size: 0.75rem; color: var(--text-2); margin-top: 0.1rem; }
+
+    /* =========================================================
+       EXPERIENCE (TIMELINE)
+    ========================================================= */
+    #experience .timeline {
+      position: relative;
+      max-width: 860px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--gold), var(--border) 80%, transparent);
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 52px;
+      margin-bottom: 3rem;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--ink);
+      border: 2px solid var(--gold);
+      transition: background var(--t) var(--ease), box-shadow var(--t) var(--ease);
+    }
+    .timeline-item:hover .timeline-dot {
+      background: var(--gold);
+      box-shadow: 0 0 16px var(--gold-glow);
+    }
+    .timeline-card {
+      padding: 1.8rem 2rem;
+      background: var(--ink-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      transition: border-color var(--t) var(--ease), background var(--t) var(--ease), transform 0.25s var(--ease);
+    }
+    .timeline-item:hover .timeline-card {
+      border-color: var(--gold-rim);
+      background: var(--ink-raised);
+      transform: translateX(4px);
+    }
+    .timeline-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .timeline-role {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-1);
+      letter-spacing: -0.01em;
+    }
+    .timeline-company {
+      font-size: 0.88rem;
+      color: var(--gold);
+      font-weight: 500;
+      margin-top: 0.15rem;
+    }
+    .timeline-date {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--text-3);
+      background: var(--ink);
+      padding: 0.3rem 0.7rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .timeline-bullets li {
+      font-size: 0.88rem;
+      color: var(--text-2);
+      line-height: 1.65;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .timeline-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold-lo);
+      font-size: 0.75rem;
+    }
+
+    /* Education row */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      max-width: 860px;
+    }
+    .edu-card {
+      padding: 1.5rem 1.8rem;
+      background: var(--ink-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      transition: border-color var(--t), background var(--t);
+    }
+    .edu-card:hover { border-color: var(--gold-rim); background: var(--ink-raised); }
+    .edu-degree {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text-1);
+      margin-bottom: 0.3rem;
+    }
+    .edu-school { font-size: 0.85rem; color: var(--gold); font-weight: 500; }
+    .edu-dates {
+      font-family: var(--ff-mono);
+      font-size: 0.68rem;
+      color: var(--text-3);
+      margin-top: 0.6rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* =========================================================
+       SKILLS
+    ========================================================= */
+    #skills .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .skill-group {
+      padding: 1.8rem;
+      background: var(--ink-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      transition: border-color var(--t), background var(--t);
+    }
+    .skill-group:hover { border-color: var(--gold-rim); background: var(--ink-raised); }
+    .skill-group-title {
+      font-family: var(--ff-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .skill-group-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.85rem;
+      background: var(--ink);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-2);
+      transition: border-color var(--t) var(--ease), color var(--t) var(--ease), background var(--t) var(--ease);
+    }
+    .pill:hover { border-color: var(--gold-rim); color: var(--text-1); background: var(--gold-glow); }
+    .pill-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .c-gold { background: var(--gold); }
+    .c-cyan { background: var(--cyan); }
+    .c-sage { background: var(--sage); }
+    .c-rose { background: var(--rose); }
+
+    /* =========================================================
+       FEATURED PROJECTS
+    ========================================================= */
+    #featured .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .feat-primary {
+      grid-row: span 2;
+    }
+    .feat-card {
+      position: relative;
+      padding: 2rem 2.2rem;
+      background: var(--ink-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      transition: border-color var(--t) var(--ease), transform 0.3s var(--ease), box-shadow var(--t) var(--ease);
+      min-height: 240px;
+    }
+    .feat-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 0% 0%, rgba(201,151,74,0.05), transparent);
+      opacity: 0;
+      transition: opacity var(--t) var(--ease);
+    }
+    .feat-card:hover {
+      border-color: var(--gold-rim);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,151,74,0.1);
+    }
+    .feat-card:hover::before { opacity: 1; }
+    .feat-primary .feat-card {
+      min-height: 500px;
+    }
+    .feat-card-num {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--text-3);
+      text-transform: uppercase;
+    }
+    .feat-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .feat-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .feat-icon.a { background: rgba(56,189,248,0.1); }
+    .feat-icon.b { background: rgba(74,222,128,0.1); }
+    .feat-icon.c { background: rgba(201,151,74,0.1); }
+    .feat-icon.d { background: rgba(251,113,133,0.1); }
+    .feat-link-btn {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-2);
+      font-size: 0.9rem;
+      transition: border-color var(--t), color var(--t), background var(--t);
+      flex-shrink: 0;
+    }
+    .feat-link-btn:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-glow); }
+    .feat-card h3 {
+      font-family: var(--ff-disp);
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text-1);
+      margin: 0.6rem 0;
+    }
+    .feat-primary .feat-card h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+    .feat-problem {
+      font-size: 0.83rem;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+    .feat-insight {
+      padding: 1rem 1.2rem;
+      background: var(--ink);
+      border-left: 2px solid var(--gold);
+      border-radius: 0 var(--r) var(--r) 0;
+      margin-top: 0.5rem;
+    }
+    .feat-insight-label {
+      font-family: var(--ff-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .feat-insight p {
+      font-size: 0.83rem;
+      color: var(--text-1);
+      line-height: 1.65;
+      font-weight: 500;
+    }
+    .feat-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .feat-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    /* =========================================================
+       ALL PROJECTS GRID
+    ========================================================= */
+    #projects .section-top {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 0.35rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: transparent;
+      color: var(--text-2);
+      font-family: var(--ff-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: none;
+      transition: all var(--t) var(--ease);
+    }
+    .filter-btn.active, .filter-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-glow);
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+    .proj-card {
+      padding: 1.6rem;
+      background: var(--ink-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: border-color var(--t) var(--ease), background var(--t) var(--ease), transform 0.25s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .proj-card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 60px; height: 60px;
+      background: radial-gradient(circle at 100% 0%, rgba(201,151,74,0.08), transparent 70%);
+      opacity: 0;
+      transition: opacity var(--t);
+    }
+    .proj-card:hover {
+      border-color: var(--gold-rim);
+      background: var(--ink-raised);
+      transform: translateY(-3px);
+    }
+    .proj-card:hover::after { opacity: 1; }
+    .proj-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .proj-module {
+      font-family: var(--ff-mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+    .proj-gh-link {
+      width: 30px; height: 30px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-3);
+      font-size: 0.8rem;
+      transition: all var(--t);
+    }
+    .proj-gh-link:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-glow); }
+    .proj-card h4 {
+      font-family: var(--ff-disp);
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--text-1);
+    }
+    .proj-card .proj-problem {
+      font-size: 0.8rem;
+      color: var(--text-2);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .proj-card .proj-insight {
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 500;
+      padding: 0.6rem 0.8rem;
+      background: rgba(201,151,74,0.06);
+      border-radius: var(--r);
+      line-height: 1.55;
+      border: 1px solid rgba(201,151,74,0.12);
+    }
+    .proj-insight-icon { margin-right: 0.3rem; }
+    .proj-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .proj-tool {
+      font-family: var(--ff-mono);
+      font-size: 0.63rem;
+      letter-spacing: 0.05em;
+      padding: 0.18rem 0.55rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-3);
+      background: var(--ink);
+      transition: color var(--t), border-color var(--t);
+    }
+    .proj-card:hover .proj-tool { color: var(--text-2); border-color: var(--border-hi); }
+
+    /* Hide filtered cards */
+    .proj-card.hidden {
+      display: none;
+    }
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+    #contact {
+      position: relative;
+      overflow: hidden;
+    }
+    #contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,151,74,0.04), transparent);
+    }
+    .contact-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .contact-inner .h2 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+    }
+    .contact-inner .body-lead {
+      max-width: 100%;
+      text-align: center;
+      margin: 0 auto 3rem;
+    }
+    .contact-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.6rem;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-2);
+      background: var(--ink-card);
+      transition: all var(--t) var(--ease);
+    }
+    .contact-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-glow);
+      transform: translateY(-2px);
+    }
+    .contact-email {
+      font-family: var(--ff-mono);
+      font-size: 1.1rem;
+      color: var(--gold-hi);
+      letter-spacing: 0.03em;
+      padding: 0.9rem 2rem;
+      border: 1px solid var(--gold-rim);
+      border-radius: var(--r);
+      background: var(--gold-glow);
+      display: inline-block;
+      margin-bottom: 3rem;
+      transition: all var(--t) var(--ease);
+    }
+    .contact-email:hover {
+      background: rgba(201,151,74,0.2);
+      border-color: var(--gold);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+    footer {
+      padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-brand {
+      font-family: var(--ff-mono);
+      font-size: 0.75rem;
+      color: var(--text-3);
+      letter-spacing: 0.1em;
+    }
+    .footer-brand strong { color: var(--gold); }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: var(--text-3);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      font-size: 0.75rem;
+      color: var(--text-3);
+      transition: color var(--t);
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* =========================================================
+       KEYFRAMES
+    ========================================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 1024px) {
+      .skills-grid { grid-template-columns: 1fr 1fr !important; }
+      .featured-grid { grid-template-columns: 1fr !important; }
+      .feat-primary { grid-row: span 1; }
+      .feat-primary .feat-card { min-height: 300px; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .ham { display: flex; }
+      body { cursor: auto; }
+      #cursor-dot, #cursor-ring { display: none; }
+      #about .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-cards { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 2rem; }
+      .projects-grid { grid-template-columns: 1fr !important; }
+      .skills-grid { grid-template-columns: 1fr !important; }
+      .section-top { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-meta { gap: 2rem; }
+      .hero-meta-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-brand">Rishi<span>.dev</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#featured">Projects</a></li>
+      <li><a href="#contact" class="nav-hire">Hire Me</a></li>
+    </ul>
+    <div class="ham" id="ham" onclick="toggleMenu()">
+      <i></i><i></i><i></i>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#experience" onclick="toggleMenu()">Experience</a>
+    <a href="#skills" onclick="toggleMenu()">Skills</a>
+    <a href="#featured" onclick="toggleMenu()">Projects</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+  </nav>
+
+  <!-- ═══ HERO ═══════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-grid"></div>
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="orb orb-c"></div>
+
+    <div class="wrap hero-inner">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for New Opportunities
+      </div>
+
+      <h1 class="hero-name">
+        Rishi
+        <span class="hero-name-last">Pillutla</span>
+      </h1>
+
+      <div class="hero-divider"></div>
+
+      <div class="hero-meta">
+        <div>
+          <div class="hero-meta-title">Data Analyst &amp; BI Developer</div>
+          <div class="hero-meta-sub">MS Data Analytics · Webster University, St. Louis</div>
+        </div>
+        <div class="hero-meta-divider"></div>
+        <div>
+          <div class="hero-meta-title">Microsoft PL-300 Certified</div>
+          <div class="hero-meta-sub">Power BI Data Analyst Certification</div>
+        </div>
+        <div class="hero-meta-divider"></div>
+        <div>
+          <div class="hero-meta-title">2+ Years Industry Experience</div>
+          <div class="hero-meta-sub">Amazon · Medplus Health Services</div>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">17<span>+</span></div>
+          <div class="stat-label">Projects Built</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">6</div>
+          <div class="stat-label">Healthcare to Finance — 6 Industries</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">92<span>%</span></div>
+          <div class="stat-label">Query I/O Reduction (49ms → 1ms)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">Full</div>
+          <div class="stat-label">Stack — SQL to Cloud BI</div>
+        </div>
+      </div>
+
+      <div class="hero-cta-row">
+        <a href="#featured" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
+          View My Work
+        </a>
+        <a href="#contact" class="btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get In Touch
+        </a>
+        <a href="https://github.com/rishisanmitra" target="_blank" rel="noopener" class="btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ════════════════════════════════════════════════ -->
+  <div class="rule"></div>
+  <section id="about" class="sect">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-left">
+          <div class="label reveal">About Me</div>
+          <h2 class="h2 reveal" data-delay="1">I find the answer hiding in the data, and <em>show people what to do about it.</em></h2>
+
+          <div class="about-text reveal" data-delay="2">
+            <p>I'm a Data Analyst and BI Developer based in St. Louis, MO, finishing my Master's in Data Analytics at Webster University. Before that, I spent two years working in analytics at Amazon and Medplus Health Services, where I learned something that still shapes how I work: the most important question isn't "what does the data show?" It's <strong>"what should we do differently because of it?"</strong></p>
+            <p>Every project in this portfolio is built around that idea. I work across the full analytics stack, from raw data extraction and SQL modeling through cloud warehousing and BI visualization, because understanding the whole pipeline helps me build better answers, not just better charts.</p>
+            <p>I'm certified in <strong>Microsoft Power BI (PL-300)</strong> and experienced across SQL Server, BigQuery, Snowflake, dbt, Python, R, Tableau, and Looker Studio. The tools matter less to me than the question being asked. I pick what fits the problem.</p>
+          </div>
+
+          <div class="about-cards reveal" data-delay="3">
+            <div class="about-card">
+              <div class="about-card-icon">🔬</div>
+              <h4>Question First</h4>
+              <p>Before I open a SQL editor, I want to understand the decision someone is trying to make. The analysis should answer a real question, not just describe what happened.</p>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">🏗️</div>
+              <h4>End-to-End Builder</h4>
+              <p>I work across the full pipeline, from raw ingestion to production BI, because every layer affects the quality of the final answer.</p>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">⚡</div>
+              <h4>Performance Matters</h4>
+              <p>A dashboard that takes 45 seconds to load doesn't get used. I've reduced query I/O by 92% in one project, and I bring that same attention to performance across all my work.</p>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">📊</div>
+              <h4>Plain Language</h4>
+              <p>Analytics only creates value when the people who need to act on it actually understand it. I write documentation and present findings with that in mind.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-right">
+          <div class="cert-block reveal reveal-right" data-delay="1">
+            <h4>Certifications</h4>
+            <div class="cert-item">
+              <div class="cert-icon ms">🏅</div>
+              <div>
+                <div class="cert-name">Microsoft Power BI Data Analyst</div>
+                <div class="cert-org">PL-300 Certified · Microsoft</div>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-icon dc">📜</div>
+              <div>
+                <div class="cert-name">Data Analyst Professional</div>
+                <div class="cert-org">DataCamp Certification</div>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-icon dc">📜</div>
+              <div>
+                <div class="cert-name">SQL Associate</div>
+                <div class="cert-org">DataCamp Certification</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cert-block reveal reveal-right" data-delay="2">
+            <h4>Education</h4>
+            <div class="cert-item">
+              <div class="cert-icon ms">🎓</div>
+              <div>
+                <div class="cert-name">Master of Science, Data Analytics</div>
+                <div class="cert-org">Webster University · St. Louis, MO · 2024–2025</div>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-icon dc">🎓</div>
+              <div>
+                <div class="cert-name">Bachelor of Technology, Computer Science</div>
+                <div class="cert-org">CMR Technical Campus · Hyderabad · 2017–2021</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cert-block reveal reveal-right" data-delay="3">
+            <h4>Quick Stats</h4>
+            <div class="cert-item">
+              <div style="font-size:1.2rem">🗄️</div>
+              <div>
+                <div class="cert-name">Full Medallion Architecture</div>
+                <div class="cert-org">Bronze → Silver → Gold pipeline with automated QA</div>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div style="font-size:1.2rem">☁️</div>
+              <div>
+                <div class="cert-name">Cloud-Native Analytics</div>
+                <div class="cert-org">Snowflake + dbt + BigQuery in production</div>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div style="font-size:1.2rem">🎯</div>
+              <div>
+                <div class="cert-name">4 BI Tools Mastered</div>
+                <div class="cert-org">Power BI · Tableau · Looker Studio · Excel</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EXPERIENCE ════════════════════════════════════════════ -->
+  <div class="rule"></div>
+  <section id="experience" class="sect">
+    <div class="wrap">
+      <div class="label reveal">Experience</div>
+      <h2 class="h2 reveal" data-delay="1">Where I've <em>worked.</em></h2>
+      <p class="body-lead reveal" data-delay="2" style="margin-bottom: 3.5rem;">Two years of experience in real data environments, building systems that get used in operations every day, not just polished reports that sit in a folder.</p>
+
+      <div class="timeline">
+        <!-- Amazon -->
+        <div class="timeline-item reveal" data-delay="1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role">Transportation Data Analyst</div>
+                <div class="timeline-company">Amazon · Hyderabad, India</div>
+              </div>
+              <div class="timeline-date">Oct 2022 – Nov 2023</div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Pulled and analyzed 100+ daily shipment records in SQL to identify which carriers and routes were consistently underperforming, giving operations leadership a factual basis for delivery conversations that had previously relied on gut feel.</li>
+              <li>Built Power BI and Excel dashboards for on-time delivery and exception tracking that replaced a manual, ad-hoc reporting process, so the team could spend less time building reports and more time acting on them.</li>
+              <li>Ran root cause analysis on recurring delay patterns and compiled the findings into documented performance evidence, which the team used directly in renegotiations with logistics partners.</li>
+              <li>Designed and maintained shared SQL reporting tables across regional operations teams, standardizing how performance data was read so different teams were no longer working from different numbers.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Medplus -->
+        <div class="timeline-item reveal" data-delay="2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <div>
+                <div class="timeline-role">Junior Data Engineer</div>
+                <div class="timeline-company">Medplus Health Services · Hyderabad, India</div>
+              </div>
+              <div class="timeline-date">Jan 2021 – Sep 2022</div>
+            </div>
+            <ul class="timeline-bullets">
+              <li>Built Python and SQL pipelines to ingest and validate healthcare operational data across multiple source systems, ensuring that the records downstream teams relied on were clean, consistent, and trustworthy.</li>
+              <li>Wrote SQL validation queries and automated test cases that caught schema mismatches and missing fields before they reached production, shifting data quality checks left in the pipeline rather than discovering problems after the fact.</li>
+              <li>Worked alongside senior engineers to diagnose and fix pipeline failures, contributing to faster turnaround times when issues surfaced and developing a sharper instinct for where data problems typically originate.</li>
+              <li>Documented data flows, field-level definitions, and schema assumptions so that any engineer or compliance reviewer could understand exactly what the pipelines were doing and why, without needing to reverse-engineer the code.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SKILLS ════════════════════════════════════════════════ -->
+  <div class="rule"></div>
+  <section id="skills" class="sect">
+    <div class="wrap">
+      <div class="label reveal">Skills &amp; Tools</div>
+      <h2 class="h2 reveal" data-delay="1">The tools I <em>work with.</em></h2>
+      <p class="body-lead reveal" data-delay="2">From pulling raw data out of APIs to building dashboards that help people make decisions, these are the tools I've used to get there.</p>
+
+      <div class="skills-grid">
+        <div class="skill-group reveal" data-delay="1">
+          <div class="skill-group-title">Business Intelligence</div>
+          <div class="skill-pills">
+            <span class="pill"><span class="pill-dot c-gold"></span>Power BI</span>
+            <span class="pill"><span class="pill-dot c-gold"></span>DAX</span>
+            <span class="pill"><span class="pill-dot c-gold"></span>Power Query</span>
+            <span class="pill"><span class="pill-dot c-cyan"></span>Tableau</span>
+            <span class="pill"><span class="pill-dot c-cyan"></span>Looker Studio</span>
+            <span class="pill"><span class="pill-dot c-sage"></span>Excel</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal" data-delay="2">
+          <div class="skill-group-title">Databases &amp; SQL</div>
+          <div class="skill-pills">
+            <span class="pill"><span class="pill-dot c-gold"></span>SQL Server (T-SQL)</span>
+            <span class="pill"><span class="pill-dot c-cyan"></span>BigQuery</span>
+            <span class="pill"><span class="pill-dot c-cyan"></span>Snowflake</span>
+            <span class="pill"><span class="pill-dot c-sage"></span>PostgreSQL</span>
+            <span class="pill"><span class="pill-dot c-sage"></span>MySQL</span>
+            <span class="pill"><span class="pill-dot c-rose"></span>Azure SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal" data-delay="3">
+          <div class="skill-group-title">Programming</div>
+          <div class="skill-pills">
+            <span class="pill"><span class="pill-dot c-gold"></span>Python</span>
+            <span class="pill"><span class="pill-dot c-gold"></span>pandas</span>
+            <span class="pill"><span class="pill-dot c-gold"></span>NumPy</span>
+            <span class="pill"><span class="pill-dot c-cyan"></span>R</span>
+            <span class="pill"><span class="pill-dot c-cyan"></span>tidyverse</span>
+            <span class="pill"><span class="pill-dot c-sage"></span>ggplot2</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal" data-delay="1">
+          <div class="skill-group-title">Data Engineering</div>
+          <div class="skill-pills">
+            <span class="pill"><span class="pill-dot c-gold"></span>dbt</span>
+            <span class="pill"><span class="pill-dot c-gold"></span>ETL Pipelines</span>
+            <span class="pill"><span class="pill-dot c-cyan"></span>Star Schema</span>
+            <span class="pill"><span class="pill-dot c-cyan"></span>Medallion Architecture</span>
+            <span class="pill"><span class="pill-dot c-sage"></span>M (Power Query)</span>
+            <span class="pill"><span class="pill-dot c-rose"></span>Docker</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal" data-delay="2">
+          <div class="skill-group-title">Analytics Methods</div>
+          <div class="skill-pills">
+            <span class="pill"><span class="pill-dot c-gold"></span>RFM Segmentation</span>
+            <span class="pill"><span class="pill-dot c-gold"></span>Cohort Analysis</span>
+            <span class="pill"><span class="pill-dot c-cyan"></span>Window Functions</span>
+            <span class="pill"><span class="pill-dot c-cyan"></span>KPI Development</span>
+            <span class="pill"><span class="pill-dot c-sage"></span>Statistical Modeling</span>
+            <span class="pill"><span class="pill-dot c-rose"></span>Query Optimization</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal" data-delay="3">
+          <div class="skill-group-title">Governance &amp; Cloud</div>
+          <div class="skill-pills">
+            <span class="pill"><span class="pill-dot c-gold"></span>Row-Level Security</span>
+            <span class="pill"><span class="pill-dot c-gold"></span>Data Quality Gates</span>
+            <span class="pill"><span class="pill-dot c-cyan"></span>GCP</span>
+            <span class="pill"><span class="pill-dot c-cyan"></span>Azure SQL</span>
+            <span class="pill"><span class="pill-dot c-sage"></span>Git / GitHub</span>
+            <span class="pill"><span class="pill-dot c-rose"></span>dbt Tests &amp; Lineage</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURED PROJECTS ═══════════════════════════════════ -->
+  <div class="rule"></div>
+  <section id="featured" class="sect">
+    <div class="wrap">
+      <div class="label reveal">Featured Work</div>
+      <h2 class="h2 reveal" data-delay="1">Projects that <em>changed decisions.</em></h2>
+      <p class="body-lead reveal" data-delay="2">Three projects where data didn't just describe reality. It rewrote the assumption.</p>
+
+      <div class="featured-grid" style="margin-top:3rem;">
+        <!-- PRIMARY: Healthcare -->
+        <div class="feat-primary reveal reveal-left" data-delay="1">
+          <div class="feat-card">
+            <div>
+              <div class="feat-top">
+                <div class="feat-icon a">🏥</div>
+                <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_1_healthcare_operations" target="_blank" rel="noopener" class="feat-link-btn" title="View on GitHub">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+              <div style="font-family:var(--ff-mono);font-size:0.63rem;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;margin-top:1.2rem;margin-bottom:0.5rem;">Project 6.1 · Healthcare</div>
+              <h3>Healthcare Operations &amp; Readmission Analytics</h3>
+              <p class="feat-problem" style="margin-top:0.8rem;">A hospital was facing Medicare penalties for 30-day readmissions and blamed the Emergency Department. Leadership needed a real data investigation. What the data actually showed was a completely different story.</p>
+            </div>
+            <div>
+              <div class="feat-insight">
+                <div class="feat-insight-label">Key Finding</div>
+                <p>$37M of the hospital's "liability" was normal maternity care. The algorithm was penalizing routine prenatal visits. Fixing the filter alone cut the apparent failure rate by nearly 50%. The ED was innocent; Urgent Care had a 92.5% readmission rate.</p>
+              </div>
+              <div class="feat-footer" style="margin-top:1.5rem;">
+                <div class="feat-tags">
+                  <span class="tag">SQL Server</span>
+                  <span class="tag">Docker</span>
+                  <span class="tag">Power BI</span>
+                  <span class="tag">T-SQL CTEs</span>
+                  <span class="tag">DAX</span>
+                </div>
+                <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_1_healthcare_operations" target="_blank" rel="noopener" class="btn-ghost" style="font-size:0.8rem;padding:0.5rem 1.2rem;">
+                  View Repo →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECONDARY: SaaS Churn -->
+        <div class="reveal reveal-right" data-delay="2">
+          <div class="feat-card">
+            <div>
+              <div class="feat-top">
+                <div class="feat-icon b">📉</div>
+                <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_1_healthcare_operations" target="_blank" rel="noopener" class="feat-link-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+              <div style="font-family:var(--ff-mono);font-size:0.63rem;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;margin-top:1rem;margin-bottom:0.5rem;">Project 6.6 · SaaS / Telecom</div>
+              <h3>SaaS Churn &amp; MRR Risk Analysis</h3>
+              <p class="feat-problem" style="margin-top:0.6rem;">Leadership believed churn was a pricing issue and planned a platform-wide price cut. SQL cohort analysis in BigQuery told a different story and stopped a costly, misdirected intervention.</p>
+            </div>
+            <div>
+              <div class="feat-insight">
+                <div class="feat-insight-label">Key Finding</div>
+                <p>Churn is an onboarding failure, not a pricing problem. Month-to-month contracts churn at 42%; converting to annual drops it below 10%. The "Month 0–12 Death Cliff" is the real revenue leak.</p>
+              </div>
+              <div class="feat-footer" style="margin-top:1.2rem;">
+                <div class="feat-tags">
+                  <span class="tag">BigQuery</span>
+                  <span class="tag">Looker Studio</span>
+                  <span class="tag">SQL</span>
+                </div>
+                <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_6_Saas_Churn" target="_blank" rel="noopener" class="btn-ghost" style="font-size:0.8rem;padding:0.5rem 1.2rem;">View Repo →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECONDARY: Data Warehouse -->
+        <div class="reveal reveal-right" data-delay="3">
+          <div class="feat-card">
+            <div>
+              <div class="feat-top">
+                <div class="feat-icon c">🗄️</div>
+                <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_6_Saas_Churn" target="_blank" rel="noopener" class="feat-link-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+              <div style="font-family:var(--ff-mono);font-size:0.63rem;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;margin-top:1rem;margin-bottom:0.5rem;">Project 4.2 · Data Engineering</div>
+              <h3>SQL Server Data Warehouse (Medallion)</h3>
+              <p class="feat-problem" style="margin-top:0.6rem;">A retail business with separate CRM and ERP systems couldn't answer basic questions about its own revenue. Generating a single profitability report took days of manual spreadsheet merging.</p>
+            </div>
+            <div>
+              <div class="feat-insight">
+                <div class="feat-insight-label">Key Finding</div>
+                <p>Built a full Bronze to Silver to Gold pipeline with automated quality checks at each stage. Once the data was unified and validated, the business could answer profitability questions in seconds that used to take days of manual work, and discovered that several product categories they believed were profitable were not.</p>
+              </div>
+              <div class="feat-footer" style="margin-top:1.2rem;">
+                <div class="feat-tags">
+                  <span class="tag">SQL Server</span>
+                  <span class="tag">T-SQL</span>
+                  <span class="tag">Stored Procs</span>
+                  <span class="tag">Python</span>
+                </div>
+                <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/04_data_modeling_and_storage/4_2_sql_server_data_warehouse" target="_blank" rel="noopener" class="btn-ghost" style="font-size:0.8rem;padding:0.5rem 1.2rem;">View Repo →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ALL PROJECTS ══════════════════════════════════════════ -->
+  <div class="rule"></div>
+  <section id="projects" class="sect">
+    <div class="wrap">
+      <div class="section-top reveal">
+        <div>
+          <div class="label">All Projects</div>
+          <h2 class="h2" style="margin-bottom:0.8rem;">All <em>projects.</em></h2>
+          <p class="body-lead" style="max-width:680px;margin-bottom:2rem;">These 17 projects are organized across the analytics workflow, from data extraction and SQL modeling to cloud engineering and BI development. Each one was built around a real business question. Use the filters to see projects by tool, or scroll through all of them.</p>
+        </div>
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all" onclick="filterProjects(this, 'all')">All</button>
+          <button class="filter-btn" data-filter="sql" onclick="filterProjects(this, 'sql')">SQL</button>
+          <button class="filter-btn" data-filter="powerbi" onclick="filterProjects(this, 'powerbi')">Power BI</button>
+          <button class="filter-btn" data-filter="tableau" onclick="filterProjects(this, 'tableau')">Tableau</button>
+          <button class="filter-btn" data-filter="python" onclick="filterProjects(this, 'python')">Python</button>
+          <button class="filter-btn" data-filter="looker" onclick="filterProjects(this, 'looker')">Looker</button>
+          <button class="filter-btn" data-filter="cloud" onclick="filterProjects(this, 'cloud')">Cloud</button>
+        </div>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+
+        <!-- Snowflake + dbt -->
+        <div class="proj-card reveal" data-delay="1" data-tags="looker">
+          <div class="proj-card-top">
+            <span class="proj-module">6.6 · SaaS Analytics</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_6_Saas_Churn" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>SaaS Churn &amp; MRR Risk Analysis (Looker Studio)</h4>
+          <p class="proj-problem">Subscription revenue appeared to be growing, masking the fact that the business was losing customers faster at the bottom of the funnel than it was acquiring them at the top — the "Leaky Bucket" illusion. Leadership believed churn was a pricing problem and was planning a price reduction to fix it.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>BigQuery SQL views revealed churn is an onboarding problem, not a price problem. Over 42% of month-to-month customers churn; locking users into annual contracts drops that below 10%. Fiber Optic subscribers without Tech Support churn at exponentially higher rates — a product-fit failure hiding inside a pricing narrative.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Looker Studio</span>
+            <span class="proj-tool">BigQuery</span>
+            <span class="proj-tool">SQL</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-delay="1" data-tags="cloud">
+          <div class="proj-card-top">
+            <span class="proj-module">4.3 · Cloud Engineering</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/04_data_modeling_and_storage/4_3_cloud_data_warehouse" target="_blank" rel="noopener" class="proj-gh-link" title="GitHub">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Snowflake + dbt Cloud Data Warehouse</h4>
+          <p class="proj-problem">Migrated a proven SQL Server Medallion architecture to a fully cloud-native, version-controlled analytics stack. Every transformation is a .sql file committed in Git.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>dbt lineage graph and automated YAML tests block bad data from reaching production. Analytics treated as code, so it's reviewable, rollback-safe, and documented.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Snowflake</span>
+            <span class="proj-tool">dbt</span>
+            <span class="proj-tool">GCP</span>
+            <span class="proj-tool">SQL</span>
+            <span class="proj-tool">Git</span>
+          </div>
+        </div>
+
+        <!-- SQL Query Optimization -->
+        <div class="proj-card reveal" data-delay="2" data-tags="sql">
+          <div class="proj-card-top">
+            <span class="proj-module">5.2 · Performance Engineering</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/05_sql_analysis_and_optimization/5_2_sql_optimization" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>SQL Query Optimization &amp; Tuning</h4>
+          <p class="proj-problem">BI dashboards were timing out during peak hours. The problem wasn't missing indexes. It was SARGability. Functions applied directly to indexed columns were blinding the optimizer.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">⚡</span>92% I/O reduction: logical reads from 7,405 → 534. Query time: 49ms → 1ms. Four-step methodology: baseline → SARGability → covering indexes → wildcard tuning.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">SQL Server</span>
+            <span class="proj-tool">T-SQL</span>
+            <span class="proj-tool">SSMS</span>
+            <span class="proj-tool">Execution Plans</span>
+          </div>
+        </div>
+
+        <!-- DTC E-Commerce -->
+        <div class="proj-card reveal" data-delay="3" data-tags="powerbi">
+          <div class="proj-card-top">
+            <span class="proj-module">6.3 · DTC Operations</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_3_dtc_operations" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>E-Commerce Operations Command Center</h4>
+          <p class="proj-problem">A luxury DTC brand lacked unified visibility across marketing, inventory, and revenue. Four isolated reporting systems meant no one had the full picture.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>35.6% of all orders included personalization add-ons, and that was the true margin driver. Hero products (Trunks) had the highest return rate, creating a hidden liability invisible in flat reporting.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Power BI</span>
+            <span class="proj-tool">DAX</span>
+            <span class="proj-tool">Sankey Chart</span>
+            <span class="proj-tool">SVG</span>
+          </div>
+        </div>
+
+        <!-- HR Analytics -->
+        <div class="proj-card reveal" data-delay="1" data-tags="tableau">
+          <div class="proj-card-top">
+            <span class="proj-module">6.4 · HR Analytics</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_4_hr_analytics" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>HR Analytics &amp; Predictive Attrition (Tableau)</h4>
+          <p class="proj-problem">HR leadership assumed 10.7% turnover was spread evenly across the company. An 8,950-person synthetic workforce analysis built with Python (Faker) revealed a concentrated crisis.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>A 20% turnover spike in 2021 was concentrated entirely in Operations, the company's largest cost center. Pay equity scatter plots revealed hidden compensation compression across mid-tenure employees.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Tableau</span>
+            <span class="proj-tool">Python</span>
+            <span class="proj-tool">pandas</span>
+            <span class="proj-tool">Faker</span>
+          </div>
+        </div>
+
+        <!-- Sales Dashboard -->
+        <div class="proj-card reveal" data-delay="2" data-tags="tableau">
+          <div class="proj-card-top">
+            <span class="proj-module">6.5 · Sales Analytics</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_5_sales_dashboard" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Sales &amp; Customer Analytics Dashboard</h4>
+          <p class="proj-problem">Total sales hit $733K with 20.4% year-over-year growth, but profit only grew 12.5%. Leadership assumed volume growth would drive proportional profit. A deeper look at the numbers proved otherwise.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Top 20% of customers generate 80%+ of total revenue. Tables and Machines product categories are loss-generating despite high revenue. Volume is growing twice as fast as profitability.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Tableau</span>
+            <span class="proj-tool">Star Schema</span>
+            <span class="proj-tool">CSV</span>
+          </div>
+        </div>
+
+        <!-- Advanced SQL Analytics -->
+        <div class="proj-card reveal" data-delay="3" data-tags="sql">
+          <div class="proj-card-top">
+            <span class="proj-module">5.1 · Advanced SQL</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/05_sql_analysis_and_optimization/5_1_local_sql_analysis" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Advanced SQL Analytics Suite (13 Scripts)</h4>
+          <p class="proj-problem">The business believed its flagship Bikes and Components lines were the primary growth drivers and wanted to double the marketing budget allocation toward them.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>LAG() window functions revealed Components declining for 3 consecutive years (-1.6%, -0.5%, -1.0%). Accessories, which had been underinvested, showed +4.45% growth. The hypothesis was completely wrong.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">SQL Server</span>
+            <span class="proj-tool">T-SQL</span>
+            <span class="proj-tool">Window Functions</span>
+            <span class="proj-tool">CTEs</span>
+          </div>
+        </div>
+
+        <!-- Marketing Pipeline -->
+        <div class="proj-card reveal" data-delay="1" data-tags="powerbi">
+          <div class="proj-card-top">
+            <span class="proj-module">6.2 · Marketing Analytics</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_2_marketing_pipeline" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Marketing Channel ROI &amp; Seller LTV</h4>
+          <p class="proj-problem">A marketplace was spending 64% of its acquisition budget on Social Media because it drove the most sign-ups. Volume was being confused with value.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Social Media acquired high-volume but low-LTV sellers. Search channels converted sellers at 2x the rate with significantly higher 12-month revenue. Budget reallocation was immediate and quantified.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Power BI</span>
+            <span class="proj-tool">SQL</span>
+            <span class="proj-tool">Window Functions</span>
+            <span class="proj-tool">CTEs</span>
+          </div>
+        </div>
+
+        <!-- Supply Chain -->
+        <div class="proj-card reveal" data-delay="2" data-tags="powerbi">
+          <div class="proj-card-top">
+            <span class="proj-module">4.1 · Supply Chain</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/04_data_modeling_and_storage/4_1_power_bi_supply_chain" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Power BI Supply Chain Star Schema</h4>
+          <p class="proj-problem">A 180,000-row supply chain dataset with 52 raw columns mixing customer, product, and financial data at mixed granularity, making focused operational queries impossible.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Kimball Star Schema decomposed the flat file into Fact_OrderItems + Dim_Customer + Dim_Product. Several high-volume categories operate at a net loss once shipping delays are factored in.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Power BI</span>
+            <span class="proj-tool">Power Query (M)</span>
+            <span class="proj-tool">DAX</span>
+            <span class="proj-tool">Star Schema</span>
+          </div>
+        </div>
+
+        <!-- FDA Drug Recall - Data Acquisition -->
+        <div class="proj-card reveal" data-delay="3" data-tags="python">
+          <div class="proj-card-top">
+            <span class="proj-module">1.1 · Data Acquisition</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/01_data_acquisition/1_1_openfda_api" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>FDA Drug Recall — API Data Pipeline</h4>
+          <p class="proj-problem">Compliance officers were manually checking the FDA website daily, a slow and unauditable process with no way to catch patterns across manufacturers or build any kind of historical trend view.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Python script pulls live recall data from the OpenFDA API, standardizes inconsistent field formats, and writes a clean, structured dataset ready for analysis. Fully automated and repeatable.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Python</span>
+            <span class="proj-tool">OpenFDA API</span>
+            <span class="proj-tool">Pandas</span>
+            <span class="proj-tool">Requests</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-delay="1" data-tags="python">
+          <div class="proj-card-top">
+            <span class="proj-module">1.2 · Data Acquisition</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/01_data_acquisition/1_2_legacy_crm_db" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Legacy CRM Extraction &amp; Ghost Revenue Detection</h4>
+          <p class="proj-problem">A business relied on a 15-year-old CRM database that had never been properly audited. Extracting it for a modern warehouse migration required chunked batching to avoid locking production tables. The bigger problem: nobody knew how much revenue in the system was tied to deleted or missing customer profiles.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>A deliberate LEFT JOIN strategy at extraction time trapped hundreds of "ghost orders" — transactions with no valid customer ID. The audit immediately exposed: 16 state variations across an 8-state sales territory, time-traveler customer creation dates (including legacy default of 1900-01-01), and quantified exactly how much historical revenue was unverifiable.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Python</span>
+            <span class="proj-tool">SQL</span>
+            <span class="proj-tool">PostgreSQL</span>
+            <span class="proj-tool">Data Profiling</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-delay="2" data-tags="python">
+          <div class="proj-card-top">
+            <span class="proj-module">2.1 · Data Cleaning</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/02_data_cleaning/2_1_python_pandas" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Python &amp; Pandas — Structuring FDA Recall Text</h4>
+          <p class="proj-problem">FDA drug recall data arrives with the most critical field — "Reason for Recall" — as an inconsistent paragraph of legal text. A compliance director cannot filter, aggregate, or build risk models against unstructured paragraphs. The raw government API output was analytically useless until categorized.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Built a Regex keyword mapping dictionary to scan raw text for compliance terms, non-destructively engineering a clean recall_category column alongside the original. Just five root cause categories account for over 85% of all recorded drug recalls. Labeling errors are the most frequent failure point; sterility issues are rare but consistently affect the largest batch sizes when they occur.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Python</span>
+            <span class="proj-tool">Pandas</span>
+            <span class="proj-tool">Regex</span>
+            <span class="proj-tool">EDA</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-delay="3" data-tags="sql">
+          <div class="proj-card-top">
+            <span class="proj-module">2.2 · Data Cleaning</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/02_data_cleaning/2_2_sql_tsql" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>T-SQL CRM Cleaning &amp; Silver Layer Standardization</h4>
+          <p class="proj-problem">The legacy CRM extraction exposed 15 years of accumulated data debt: orphaned "ghost" orders with no customer, 16 distinct state variations across an 8-state territory, and impossible system default dates. Feeding this raw data into BI dashboards would produce inflated revenue, broken regional maps, and misleading year-over-year trends.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Built non-destructive SQL Views rather than running irreversible UPDATE/DELETE statements, preserving the historical audit trail. A TRY_CAST firewall safely handles type mismatches without crashing the pipeline. CASE standardization collapsed 16 fragmented state entries into the correct 8 operational territories, and ghost revenue was quarantined from all financial models.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">T-SQL</span>
+            <span class="proj-tool">SQL Server</span>
+            <span class="proj-tool">Data Views</span>
+            <span class="proj-tool">Standardization</span>
+          </div>
+        </div>
+
+        <!-- FDA Drug Recall - Risk Analysis -->
+        <div class="proj-card reveal" data-delay="1" data-tags="python">
+          <div class="proj-card-top">
+            <span class="proj-module">3.1 · Feature Engineering</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/03_data_transformation/3_1_python_pandas" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>FDA Drug Recall — Risk Classification & Analysis</h4>
+          <p class="proj-problem">The raw recall data had no risk scoring, no root-cause classification, and no way to identify which manufacturers or product categories were driving the most serious safety failures.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Regex-based root-cause tagging across 5 failure categories covers 85%+ of all recalls. A Gold-layer risk matrix surfaces the highest-risk manufacturers. Operational lag analysis flags transparency failures.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Python</span>
+            <span class="proj-tool">Pandas</span>
+            <span class="proj-tool">Regex</span>
+            <span class="proj-tool">NumPy</span>
+          </div>
+        </div>
+
+        <!-- SQL RFM Segmentation -->
+        <div class="proj-card reveal" data-delay="1" data-tags="sql">
+          <div class="proj-card-top">
+            <span class="proj-module">3.2 · Customer Analytics</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/03_data_transformation/3_2_sql_kpi_aggregation" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>SQL RFM Customer Segmentation</h4>
+          <p class="proj-problem">A business spending equally on all customers to retain them with no behavioral segmentation to identify which accounts were truly at risk of churning vs. which were safely loyal.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Window functions identified 23 high-value customers with dangerously low recent activity. They looked fine in aggregate but were quietly slipping away. Precision win-back campaigns replace mass marketing.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">SQL Server</span>
+            <span class="proj-tool">T-SQL</span>
+            <span class="proj-tool">NTILE</span>
+            <span class="proj-tool">CTEs</span>
+          </div>
+        </div>
+
+        <!-- R Statistical Transformation -->
+        <div class="proj-card reveal" data-delay="2" data-tags="">
+          <div class="proj-card-top">
+            <span class="proj-module">2.4 · Data Cleaning</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/02_data_cleaning/2_4_r_cleaning" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Domain-Driven Device Data Cleaning (R)</h4>
+          <p class="proj-problem">A used-device marketplace prices devices algorithmically, but the raw dataset contained physically impossible hardware specs — RAM exceeding storage, pre-2015 devices tagged with 2022-era storage capacities, front cameras with higher megapixels than rear cameras. Any model trained on this data would produce nonsensical prices.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Built domain-specific logic filters in R/Tidyverse catching hardware impossibilities by type. Smart grouped imputation filled missing battery capacity by Brand and Release Year rather than dataset-wide averages, preserving hardware generation context. Visual safety loops in ggplot2 confirmed each transformation before proceeding.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">R</span>
+            <span class="proj-tool">Tidyverse</span>
+            <span class="proj-tool">ggplot2</span>
+            <span class="proj-tool">Data Validation</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-delay="3" data-tags="">
+          <div class="proj-card-top">
+            <span class="proj-module">3.3 · Statistical Transformation</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/03_data_transformation/3_3_r_statistical_transformation" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>R Statistical Engineering — Device Value Modeling</h4>
+          <p class="proj-problem">Raw hardware specs like battery capacity and RAM exist on completely different numerical scales. A 2015 flagship phone cannot be directly compared to a 2022 budget device without mathematical normalization. Feeding raw numbers into a pricing model would systematically overprice outdated premium hardware and underprice efficient modern budget devices.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Applied log10 transformation to normalize the heavily right-skewed price distribution into a regression-ready bell curve. Z-scored all hardware specs to enable cross-dimension comparison. Engineered a Battery Density ratio (mAh per gram) that revealed mid-tier brands consistently outperform flagship brands on physical efficiency.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">R</span>
+            <span class="proj-tool">Tidyverse</span>
+            <span class="proj-tool">Statistical Scaling</span>
+            <span class="proj-tool">Feature Engineering</span>
+          </div>
+        </div>
+
+        <!-- Citibike 1.3 — CSV Acquisition -->
+        <div class="proj-card reveal" data-delay="3" data-tags="python">
+          <div class="proj-card-top">
+            <span class="proj-module">1.3 · Data Acquisition</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/01_data_acquisition/1_3_frankenfile_csv" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Citibike "Frankenfile" CSV Acquisition</h4>
+          <p class="proj-problem">A backend system migration in 2021 broke the Citibike station ID schema. Pre and post-migration export files used completely different ID formats, making them impossible to combine without first understanding what had changed.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Diagnosed the schema break by comparing old and new export structures side by side. Built a Python extraction script that pulled and labelled both file formats correctly before passing them downstream for cleaning.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Python</span>
+            <span class="proj-tool">Pandas</span>
+            <span class="proj-tool">CSV Parsing</span>
+          </div>
+        </div>
+
+        <!-- Citibike 2.3 — Power Query Cleaning -->
+        <div class="proj-card reveal" data-delay="1" data-tags="powerbi">
+          <div class="proj-card-top">
+            <span class="proj-module">2.3 · Data Cleaning</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/02_data_cleaning/2_3_power_query" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Power Query M — Schema Repair & Cleaning</h4>
+          <p class="proj-problem">The two incompatible Citibike export files needed to be reconciled into a single clean dataset before any Power BI relationship could be built. Neither file alone was usable, and a naive merge would have produced false trip counts.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Power Query M code performed a double-merge translation — matching stations across both schemas via a lookup bridge table. The resulting unified file had zero orphaned station IDs and was ready for dimensional modeling.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Power Query (M)</span>
+            <span class="proj-tool">Power BI</span>
+            <span class="proj-tool">Data Validation</span>
+          </div>
+        </div>
+
+        <!-- Citibike 3.4 — Power BI Modeling -->
+        <div class="proj-card reveal" data-delay="2" data-tags="powerbi">
+          <div class="proj-card-top">
+            <span class="proj-module">3.4 · Data Transformation</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/03_data_transformation/3_4_power_bi_modeling" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Citibike Power BI Star Schema & DAX Modeling</h4>
+          <p class="proj-problem">The cleaned Citibike flat file had no dimensional structure, which meant Power BI could not run time-intelligence queries or filter efficiently by station, borough, or hour without full table scans on 500K+ rows.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Decomposed the flat file into Fact_Trips, Dim_Station, and Dim_Date. VertiPaq compression reduced storage by 60%. 15 stations accounted for 70% of peak-hour volume, completely reshaping the rebalancing strategy recommendation.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Power BI</span>
+            <span class="proj-tool">DAX</span>
+            <span class="proj-tool">Star Schema</span>
+            <span class="proj-tool">VertiPaq</span>
+          </div>
+        </div>
+
+      </div><!-- /projectsGrid -->
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══════════════════════════════════════════════ -->
+  <div class="rule"></div>
+  <section id="contact" class="sect">
+    <div class="wrap">
+      <div class="contact-inner">
+        <div class="label reveal" style="justify-content:center;">Get In Touch</div>
+        <h2 class="h2 reveal" data-delay="1" style="text-align:center;">Let's <em>talk.</em></h2>
+        <p class="body-lead reveal" data-delay="2" style="text-align:center;margin:0 auto 2.5rem;">I'm looking for Data Analyst, BI Developer, and Analytics Engineer roles. If you're building a data team and want someone who can work across the full stack, from building pipelines to communicating findings to the people who need to act on them, I'd genuinely like to hear from you. Reach out directly or connect on LinkedIn.</p>
+
+        <div class="reveal" data-delay="3">
+          <a href="/cdn-cgi/l/email-protection#66140f150e0f1507080b0f121407575426010b070f0a4805090b" class="contact-email"><span class="__cf_email__" data-cfemail="98eaf1ebf0f1ebf9f6f5f1eceaf9a9aad8fff5f9f1f4b6fbf7f5">[email&#160;protected]</span></a>
+        </div>
+
+        <div class="contact-links reveal" data-delay="4">
+          <a href="https://www.linkedin.com/in/prishisanmitra/" target="_blank" rel="noopener" class="contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/rishisanmitra" target="_blank" rel="noopener" class="contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="tel:3142199195" class="contact-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 013 2.18 2 2 0 014 .06h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14z"/></svg>
+            314-219-9195
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════ -->
+  <div class="rule"></div>
+  <footer>
+    <div class="footer-brand"><strong>Rishi Pillutla</strong> · Data Analytics Portfolio</div>
+    <div class="footer-copy">Built for GitHub Pages · 2025 · Rishi Pillutla</div>
+    <div class="footer-links">
+      <a href="#hero">Top ↑</a>
+      <a href="https://github.com/rishisanmitra" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/prishisanmitra/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════════════════════ -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    /* ── CURSOR ─────────────────────────────────────────────── */
+    const dot  = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0;   // mouse
+    let rx = 0, ry = 0;   // ring (lerped)
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left  = mx + 'px';
+      dot.style.top   = my + 'px';
+    });
+
+    // Ring follows with lag
+    (function animateRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(animateRing);
+    })();
+
+    // Hover effect on interactive elements
+    const hoverEls = document.querySelectorAll('a, button, .feat-card, .proj-card, .about-card, .timeline-card, .skill-group');
+    hoverEls.forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    /* ── NAV SCROLL ─────────────────────────────────────────── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    /* ── MOBILE NAV ─────────────────────────────────────────── */
+    function toggleMenu() {
+      const ham = document.getElementById('ham');
+      const mn  = document.getElementById('mobileNav');
+      ham.classList.toggle('open');
+      mn.classList.toggle('open');
+      document.body.style.overflow = mn.classList.contains('open') ? 'hidden' : '';
+    }
+
+    /* ── SCROLL REVEAL ──────────────────────────────────────── */
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revObs.observe(el));
+
+    /* ── PROJECT FILTER ─────────────────────────────────────── */
+    function filterProjects(btn, filter) {
+      // Update button states
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Show/hide cards using exact word matching
+      document.querySelectorAll('.proj-card').forEach(card => {
+        if (filter === 'all') {
+          card.classList.remove('hidden');
+        } else {
+          const tags = (card.getAttribute('data-tags') || '').split(' ').map(t => t.trim()).filter(Boolean);
+          card.classList.toggle('hidden', !tags.includes(filter));
+        }
+      });
+
+      // Force all non-hidden cards visible (handles cards below fold or previously hidden)
+      setTimeout(() => {
+        document.querySelectorAll('.proj-card:not(.hidden)').forEach((card, i) => {
+          card.style.transitionDelay = (i * 0.05) + 's';
+          card.classList.add('visible');
+        });
+      }, 30);
+    }
+
+    // On page load, make all visible project cards show (don't rely solely on scroll observer)
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.querySelectorAll('.proj-card').forEach((card, i) => {
+          card.style.transitionDelay = (i * 0.05) + 's';
+          card.classList.add('visible');
+        });
+      }, 400);
+    });
+
+    /* ── SMOOTH ANCHOR OFFSET (nav height) ─────────────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.scrollY - 70;
+        window.scrollTo({ top, behavior: 'smooth' });
+      });
+    });
+
+    /* ── TYPING EFFECT on hero badge ───────────────────────── */
+    // Already visible via CSS animation — no extra JS needed
+
+    /* ── PARALLAX (subtle on orbs) ─────────────────────────── */
+    window.addEventListener('scroll', () => {
+      const sy = window.scrollY;
+      const orbA = document.querySelector('.orb-a');
+      const orbB = document.querySelector('.orb-b');
+      const orbC = document.querySelector('.orb-c');
+      if (orbA) orbA.style.transform = `translate(0, ${sy * 0.04}px)`;
+      if (orbB) orbB.style.transform = `translate(0, ${sy * -0.03}px)`;
+      if (orbC) orbC.style.transform = `translate(0, ${sy * 0.02}px)`;
+    }, { passive: true });
+
+  </script>
+</body>
+</html>
