@@ -1230,6 +1230,75 @@
       100% { background-position: 200% 0; }
     }
 
+
+
+    /* =========================================================
+       THEME TOGGLE
+    ========================================================= */
+    html[data-theme="light"] {
+      --ink:        #F7F3EC;
+      --ink-mid:    #EEE6D8;
+      --ink-card:   #FFFDF8;
+      --ink-raised: #FFFFFF;
+      --gold:       #B57A2E;
+      --gold-hi:    #8A5A1F;
+      --gold-lo:    #D9B07A;
+      --gold-glow:  rgba(181,122,46,0.12);
+      --gold-rim:   rgba(181,122,46,0.22);
+      --cyan:       #0EA5E9;
+      --cyan-dim:   rgba(14,165,233,0.1);
+      --sage:       #16A34A;
+      --sage-dim:   rgba(22,163,74,0.1);
+      --rose:       #E11D48;
+      --text-1:     #161616;
+      --text-2:     #5C6470;
+      --text-3:     #8B94A3;
+      --border:     rgba(181,122,46,0.12);
+      --border-hi:  rgba(181,122,46,0.28);
+    }
+    html[data-theme="light"] nav {
+      background: rgba(247,243,236,0.86);
+    }
+    html[data-theme="light"] nav.scrolled {
+      background: rgba(247,243,236,0.96);
+    }
+    html[data-theme="light"] .mobile-nav {
+      background: rgba(247,243,236,0.96);
+    }
+    html[data-theme="light"] body::after {
+      opacity: 0.18;
+    }
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      min-width: 44px;
+      height: 40px;
+      padding: 0 0.95rem;
+      margin-left: 0.75rem;
+      border: 1px solid var(--border-hi);
+      border-radius: var(--r);
+      background: transparent;
+      color: var(--text-1);
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: border-color var(--t) var(--ease), background var(--t) var(--ease), color var(--t) var(--ease), transform 0.2s var(--ease);
+    }
+    .theme-toggle:hover {
+      border-color: var(--gold);
+      background: var(--gold-glow);
+      color: var(--gold);
+      transform: translateY(-1px);
+    }
+    .theme-toggle svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
     /* =========================================================
        RESPONSIVE
     ========================================================= */
@@ -1274,6 +1343,22 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#featured">Projects</a></li>
       <li><a href="#contact" class="nav-hire">Hire Me</a></li>
+      <li>
+        <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <span id="themeToggleLabel">Light</span>
+        </button>
+      </li>
     </ul>
     <div class="ham" id="ham" onclick="toggleMenu()">
       <i></i><i></i><i></i>
@@ -1287,6 +1372,20 @@
     <a href="#skills" onclick="toggleMenu()">Skills</a>
     <a href="#featured" onclick="toggleMenu()">Projects</a>
     <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <button id="themeToggleMobile" class="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <path d="M12 2v2"></path>
+        <path d="M12 20v2"></path>
+        <path d="m4.93 4.93 1.41 1.41"></path>
+        <path d="m17.66 17.66 1.41 1.41"></path>
+        <path d="M2 12h2"></path>
+        <path d="M20 12h2"></path>
+        <path d="m6.34 17.66-1.41 1.41"></path>
+        <path d="m19.07 4.93-1.41 1.41"></path>
+      </svg>
+      <span id="themeToggleLabelMobile">Light</span>
+    </button>
   </nav>
 
   <!-- ═══ HERO ═══════════════════════════════════════════════ -->
@@ -2171,6 +2270,38 @@
        JAVASCRIPT
   ═══════════════════════════════════════════════════════════ -->
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+
+    /* ── THEME TOGGLE ───────────────────────────────────────── */
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeToggleMobile = document.getElementById('themeToggleMobile');
+    const themeLabels = [
+      document.getElementById('themeToggleLabel'),
+      document.getElementById('themeToggleLabelMobile')
+    ];
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      const nextLabel = theme === 'dark' ? 'Light' : 'Dark';
+      themeLabels.forEach(label => {
+        if (label) label.textContent = nextLabel;
+      });
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    const preferredTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    applyTheme(savedTheme || preferredTheme);
+
+    [themeToggle, themeToggleMobile].forEach(btn => {
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        const nextTheme = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        applyTheme(nextTheme);
+      });
+    });
+
     /* ── CURSOR ─────────────────────────────────────────────── */
     const dot  = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
