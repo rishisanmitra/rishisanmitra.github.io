@@ -1764,7 +1764,7 @@
             <div>
               <div class="feat-top">
                 <div class="feat-icon b">📉</div>
-                <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_1_healthcare_operations" target="_blank" rel="noopener" class="feat-link-btn">
+                <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_6_Saas_Churn" target="_blank" rel="noopener" class="feat-link-btn">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 </a>
               </div>
@@ -1795,7 +1795,7 @@
             <div>
               <div class="feat-top">
                 <div class="feat-icon c">🗄️</div>
-                <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_6_Saas_Churn" target="_blank" rel="noopener" class="feat-link-btn">
+                <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/04_data_modeling_and_storage/4_2_sql_server_data_warehouse" target="_blank" rel="noopener" class="feat-link-btn">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                 </a>
               </div>
@@ -1847,24 +1847,228 @@
 
       <div class="projects-grid" id="projectsGrid">
 
-        <!-- Snowflake + dbt -->
-        <div class="proj-card reveal" data-delay="1" data-tags="looker">
+        <!-- FDA Drug Recall - Data Acquisition -->
+        <div class="proj-card reveal" data-delay="3" data-tags="python">
           <div class="proj-card-top">
-            <span class="proj-module">6.6 · SaaS Analytics</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_6_Saas_Churn" target="_blank" rel="noopener" class="proj-gh-link">
+            <span class="proj-module">1.1 · Data Acquisition</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/01_data_acquisition/1_1_openfda_api" target="_blank" rel="noopener" class="proj-gh-link">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
             </a>
           </div>
-          <h4>SaaS Churn &amp; MRR Risk Analysis (Looker Studio)</h4>
-          <p class="proj-problem">Subscription revenue appeared to be growing, masking the fact that the business was losing customers faster at the bottom of the funnel than it was acquiring them at the top — the "Leaky Bucket" illusion. Leadership believed churn was a pricing problem and was planning a price reduction to fix it.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>BigQuery SQL views revealed churn is an onboarding problem, not a price problem. Over 42% of month-to-month customers churn; locking users into annual contracts drops that below 10%. Fiber Optic subscribers without Tech Support churn at exponentially higher rates — a product-fit failure hiding inside a pricing narrative.</div>
+          <h4>FDA Drug Recall — API Data Pipeline</h4>
+          <p class="proj-problem">Compliance officers were manually checking the FDA website daily, a slow and unauditable process with no way to catch patterns across manufacturers or build any kind of historical trend view.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Python script pulls live recall data from the OpenFDA API, standardizes inconsistent field formats, and writes a clean, structured dataset ready for analysis. Fully automated and repeatable.</div>
           <div class="proj-tools">
-            <span class="proj-tool">Looker Studio</span>
-            <span class="proj-tool">BigQuery</span>
-            <span class="proj-tool">SQL</span>
+            <span class="proj-tool">Python</span>
+            <span class="proj-tool">OpenFDA API</span>
+            <span class="proj-tool">Pandas</span>
+            <span class="proj-tool">Requests</span>
           </div>
         </div>
 
+        <div class="proj-card reveal" data-delay="1" data-tags="python">
+          <div class="proj-card-top">
+            <span class="proj-module">1.2 · Data Acquisition</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/01_data_acquisition/1_2_legacy_crm_db" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Legacy CRM Extraction &amp; Ghost Revenue Detection</h4>
+          <p class="proj-problem">A business relied on a 15-year-old CRM database that had never been properly audited. Extracting it for a modern warehouse migration required chunked batching to avoid locking production tables. The bigger problem: nobody knew how much revenue in the system was tied to deleted or missing customer profiles.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>A deliberate LEFT JOIN strategy at extraction time trapped hundreds of "ghost orders" — transactions with no valid customer ID. The audit immediately exposed: 16 state variations across an 8-state sales territory, time-traveler customer creation dates (including legacy default of 1900-01-01), and quantified exactly how much historical revenue was unverifiable.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Python</span>
+            <span class="proj-tool">SQL</span>
+            <span class="proj-tool">PostgreSQL</span>
+            <span class="proj-tool">Data Profiling</span>
+          </div>
+        </div>
+        
+        <!-- Citibike 1.3 — CSV Acquisition -->
+        <div class="proj-card reveal" data-delay="3" data-tags="python">
+          <div class="proj-card-top">
+            <span class="proj-module">1.3 · Data Acquisition</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/01_data_acquisition/1_3_frankenfile_csv" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Citibike "Frankenfile" CSV Acquisition</h4>
+          <p class="proj-problem">A backend system migration in 2021 broke the Citibike station ID schema. Pre and post-migration export files used completely different ID formats, making them impossible to combine without first understanding what had changed.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Diagnosed the schema break by comparing old and new export structures side by side. Built a Python extraction script that pulled and labelled both file formats correctly before passing them downstream for cleaning.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Python</span>
+            <span class="proj-tool">Pandas</span>
+            <span class="proj-tool">CSV Parsing</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-delay="2" data-tags="python">
+          <div class="proj-card-top">
+            <span class="proj-module">2.1 · Data Cleaning</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/02_data_cleaning/2_1_python_pandas" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Python &amp; Pandas — Structuring FDA Recall Text</h4>
+          <p class="proj-problem">FDA drug recall data arrives with the most critical field — "Reason for Recall" — as an inconsistent paragraph of legal text. A compliance director cannot filter, aggregate, or build risk models against unstructured paragraphs. The raw government API output was analytically useless until categorized.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Built a Regex keyword mapping dictionary to scan raw text for compliance terms, non-destructively engineering a clean recall_category column alongside the original. Just five root cause categories account for over 85% of all recorded drug recalls. Labeling errors are the most frequent failure point; sterility issues are rare but consistently affect the largest batch sizes when they occur.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Python</span>
+            <span class="proj-tool">Pandas</span>
+            <span class="proj-tool">Regex</span>
+            <span class="proj-tool">EDA</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-delay="3" data-tags="sql">
+          <div class="proj-card-top">
+            <span class="proj-module">2.2 · Data Cleaning</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/02_data_cleaning/2_2_sql_tsql" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>T-SQL CRM Cleaning &amp; Silver Layer Standardization</h4>
+          <p class="proj-problem">The legacy CRM extraction exposed 15 years of accumulated data debt: orphaned "ghost" orders with no customer, 16 distinct state variations across an 8-state territory, and impossible system default dates. Feeding this raw data into BI dashboards would produce inflated revenue, broken regional maps, and misleading year-over-year trends.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Built non-destructive SQL Views rather than running irreversible UPDATE/DELETE statements, preserving the historical audit trail. A TRY_CAST firewall safely handles type mismatches without crashing the pipeline. CASE standardization collapsed 16 fragmented state entries into the correct 8 operational territories, and ghost revenue was quarantined from all financial models.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">T-SQL</span>
+            <span class="proj-tool">SQL Server</span>
+            <span class="proj-tool">Data Views</span>
+            <span class="proj-tool">Standardization</span>
+          </div>
+        </div>
+
+        <!-- Citibike 2.3 — Power Query Cleaning -->
+        <div class="proj-card reveal" data-delay="1" data-tags="powerbi">
+          <div class="proj-card-top">
+            <span class="proj-module">2.3 · Data Cleaning</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/02_data_cleaning/2_3_power_query" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Power Query M — Schema Repair & Cleaning</h4>
+          <p class="proj-problem">The two incompatible Citibike export files needed to be reconciled into a single clean dataset before any Power BI relationship could be built. Neither file alone was usable, and a naive merge would have produced false trip counts.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Power Query M code performed a double-merge translation — matching stations across both schemas via a lookup bridge table. The resulting unified file had zero orphaned station IDs and was ready for dimensional modeling.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Power Query (M)</span>
+            <span class="proj-tool">Power BI</span>
+            <span class="proj-tool">Data Validation</span>
+          </div>
+        </div>
+
+        <!-- R Statistical Transformation -->
+        <div class="proj-card reveal" data-delay="2" data-tags="">
+          <div class="proj-card-top">
+            <span class="proj-module">2.4 · Data Cleaning</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/02_data_cleaning/2_4_r_cleaning" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Domain-Driven Device Data Cleaning (R)</h4>
+          <p class="proj-problem">A used-device marketplace prices devices algorithmically, but the raw dataset contained physically impossible hardware specs — RAM exceeding storage, pre-2015 devices tagged with 2022-era storage capacities, front cameras with higher megapixels than rear cameras. Any model trained on this data would produce nonsensical prices.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Built domain-specific logic filters in R/Tidyverse catching hardware impossibilities by type. Smart grouped imputation filled missing battery capacity by Brand and Release Year rather than dataset-wide averages, preserving hardware generation context. Visual safety loops in ggplot2 confirmed each transformation before proceeding.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">R</span>
+            <span class="proj-tool">Tidyverse</span>
+            <span class="proj-tool">ggplot2</span>
+            <span class="proj-tool">Data Validation</span>
+          </div>
+        </div>
+
+        <!-- FDA Drug Recall - Risk Analysis -->
+        <div class="proj-card reveal" data-delay="1" data-tags="python">
+          <div class="proj-card-top">
+            <span class="proj-module">3.1 · Feature Engineering</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/03_data_transformation/3_1_python_pandas" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>FDA Drug Recall — Risk Classification & Analysis</h4>
+          <p class="proj-problem">The raw recall data had no risk scoring, no root-cause classification, and no way to identify which manufacturers or product categories were driving the most serious safety failures.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Regex-based root-cause tagging across 5 failure categories covers 85%+ of all recalls. A Gold-layer risk matrix surfaces the highest-risk manufacturers. Operational lag analysis flags transparency failures.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Python</span>
+            <span class="proj-tool">Pandas</span>
+            <span class="proj-tool">Regex</span>
+            <span class="proj-tool">NumPy</span>
+          </div>
+        </div>
+
+        <!-- SQL RFM Segmentation -->
+        <div class="proj-card reveal" data-delay="1" data-tags="sql">
+          <div class="proj-card-top">
+            <span class="proj-module">3.2 · Customer Analytics</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/03_data_transformation/3_2_sql_kpi_aggregation" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>SQL RFM Customer Segmentation</h4>
+          <p class="proj-problem">A business spending equally on all customers to retain them with no behavioral segmentation to identify which accounts were truly at risk of churning vs. which were safely loyal.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Window functions identified 23 high-value customers with dangerously low recent activity. They looked fine in aggregate but were quietly slipping away. Precision win-back campaigns replace mass marketing.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">SQL Server</span>
+            <span class="proj-tool">T-SQL</span>
+            <span class="proj-tool">NTILE</span>
+            <span class="proj-tool">CTEs</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal" data-delay="3" data-tags="">
+          <div class="proj-card-top">
+            <span class="proj-module">3.3 · Statistical Transformation</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/03_data_transformation/3_3_r_statistical_transformation" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>R Statistical Engineering — Device Value Modeling</h4>
+          <p class="proj-problem">Raw hardware specs like battery capacity and RAM exist on completely different numerical scales. A 2015 flagship phone cannot be directly compared to a 2022 budget device without mathematical normalization. Feeding raw numbers into a pricing model would systematically overprice outdated premium hardware and underprice efficient modern budget devices.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Applied log10 transformation to normalize the heavily right-skewed price distribution into a regression-ready bell curve. Z-scored all hardware specs to enable cross-dimension comparison. Engineered a Battery Density ratio (mAh per gram) that revealed mid-tier brands consistently outperform flagship brands on physical efficiency.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">R</span>
+            <span class="proj-tool">Tidyverse</span>
+            <span class="proj-tool">Statistical Scaling</span>
+            <span class="proj-tool">Feature Engineering</span>
+          </div>
+        </div>
+
+        <!-- Citibike 3.4 — Power BI Modeling -->
+        <div class="proj-card reveal" data-delay="2" data-tags="powerbi">
+          <div class="proj-card-top">
+            <span class="proj-module">3.4 · Data Transformation</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/03_data_transformation/3_4_power_bi_modeling" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Citibike Power BI Star Schema & DAX Modeling</h4>
+          <p class="proj-problem">The cleaned Citibike flat file had no dimensional structure, which meant Power BI could not run time-intelligence queries or filter efficiently by station, borough, or hour without full table scans on 500K+ rows.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Decomposed the flat file into Fact_Trips, Dim_Station, and Dim_Date. VertiPaq compression reduced storage by 60%. 15 stations accounted for 70% of peak-hour volume, completely reshaping the rebalancing strategy recommendation.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Power BI</span>
+            <span class="proj-tool">DAX</span>
+            <span class="proj-tool">Star Schema</span>
+            <span class="proj-tool">VertiPaq</span>
+          </div>
+        </div>
+        
+        <!-- Supply Chain -->
+        <div class="proj-card reveal" data-delay="2" data-tags="powerbi">
+          <div class="proj-card-top">
+            <span class="proj-module">4.1 · Supply Chain</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/04_data_modeling_and_storage/4_1_power_bi_supply_chain" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Power BI Supply Chain Star Schema</h4>
+          <p class="proj-problem">A 180,000-row supply chain dataset with 52 raw columns mixing customer, product, and financial data at mixed granularity, making focused operational queries impossible.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Kimball Star Schema decomposed the flat file into Fact_OrderItems + Dim_Customer + Dim_Product. Several high-volume categories operate at a net loss once shipping delays are factored in.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Power BI</span>
+            <span class="proj-tool">Power Query (M)</span>
+            <span class="proj-tool">DAX</span>
+            <span class="proj-tool">Star Schema</span>
+          </div>
+        </div>       
+        
         <div class="proj-card reveal" data-delay="1" data-tags="cloud">
           <div class="proj-card-top">
             <span class="proj-module">4.3 · Cloud Engineering</span>
@@ -1881,6 +2085,25 @@
             <span class="proj-tool">GCP</span>
             <span class="proj-tool">SQL</span>
             <span class="proj-tool">Git</span>
+          </div>
+        </div>
+        
+        <!-- Advanced SQL Analytics -->
+        <div class="proj-card reveal" data-delay="3" data-tags="sql">
+          <div class="proj-card-top">
+            <span class="proj-module">5.1 · Advanced SQL</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/05_sql_analysis_and_optimization/5_1_local_sql_analysis" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Advanced SQL Analytics Suite (13 Scripts)</h4>
+          <p class="proj-problem">The business believed its flagship Bikes and Components lines were the primary growth drivers and wanted to double the marketing budget allocation toward them.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>LAG() window functions revealed Components declining for 3 consecutive years (-1.6%, -0.5%, -1.0%). Accessories, which had been underinvested, showed +4.45% growth. The hypothesis was completely wrong.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">SQL Server</span>
+            <span class="proj-tool">T-SQL</span>
+            <span class="proj-tool">Window Functions</span>
+            <span class="proj-tool">CTEs</span>
           </div>
         </div>
 
@@ -1900,6 +2123,25 @@
             <span class="proj-tool">T-SQL</span>
             <span class="proj-tool">SSMS</span>
             <span class="proj-tool">Execution Plans</span>
+          </div>
+        </div>
+        
+        <!-- Marketing Pipeline -->
+        <div class="proj-card reveal" data-delay="1" data-tags="powerbi">
+          <div class="proj-card-top">
+            <span class="proj-module">6.2 · Marketing Analytics</span>
+            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_2_marketing_pipeline" target="_blank" rel="noopener" class="proj-gh-link">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+          <h4>Marketing Channel ROI &amp; Seller LTV</h4>
+          <p class="proj-problem">A marketplace was spending 64% of its acquisition budget on Social Media because it drove the most sign-ups. Volume was being confused with value.</p>
+          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Social Media acquired high-volume but low-LTV sellers. Search channels converted sellers at 2x the rate with significantly higher 12-month revenue. Budget reallocation was immediate and quantified.</div>
+          <div class="proj-tools">
+            <span class="proj-tool">Power BI</span>
+            <span class="proj-tool">SQL</span>
+            <span class="proj-tool">Window Functions</span>
+            <span class="proj-tool">CTEs</span>
           </div>
         </div>
 
@@ -1956,266 +2198,6 @@
             <span class="proj-tool">Tableau</span>
             <span class="proj-tool">Star Schema</span>
             <span class="proj-tool">CSV</span>
-          </div>
-        </div>
-
-        <!-- Advanced SQL Analytics -->
-        <div class="proj-card reveal" data-delay="3" data-tags="sql">
-          <div class="proj-card-top">
-            <span class="proj-module">5.1 · Advanced SQL</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/05_sql_analysis_and_optimization/5_1_local_sql_analysis" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>Advanced SQL Analytics Suite (13 Scripts)</h4>
-          <p class="proj-problem">The business believed its flagship Bikes and Components lines were the primary growth drivers and wanted to double the marketing budget allocation toward them.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>LAG() window functions revealed Components declining for 3 consecutive years (-1.6%, -0.5%, -1.0%). Accessories, which had been underinvested, showed +4.45% growth. The hypothesis was completely wrong.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">SQL Server</span>
-            <span class="proj-tool">T-SQL</span>
-            <span class="proj-tool">Window Functions</span>
-            <span class="proj-tool">CTEs</span>
-          </div>
-        </div>
-
-        <!-- Marketing Pipeline -->
-        <div class="proj-card reveal" data-delay="1" data-tags="powerbi">
-          <div class="proj-card-top">
-            <span class="proj-module">6.2 · Marketing Analytics</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/06_data_viz_and_decision_analytics/6_2_marketing_pipeline" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>Marketing Channel ROI &amp; Seller LTV</h4>
-          <p class="proj-problem">A marketplace was spending 64% of its acquisition budget on Social Media because it drove the most sign-ups. Volume was being confused with value.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Social Media acquired high-volume but low-LTV sellers. Search channels converted sellers at 2x the rate with significantly higher 12-month revenue. Budget reallocation was immediate and quantified.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">Power BI</span>
-            <span class="proj-tool">SQL</span>
-            <span class="proj-tool">Window Functions</span>
-            <span class="proj-tool">CTEs</span>
-          </div>
-        </div>
-
-        <!-- Supply Chain -->
-        <div class="proj-card reveal" data-delay="2" data-tags="powerbi">
-          <div class="proj-card-top">
-            <span class="proj-module">4.1 · Supply Chain</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/04_data_modeling_and_storage/4_1_power_bi_supply_chain" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>Power BI Supply Chain Star Schema</h4>
-          <p class="proj-problem">A 180,000-row supply chain dataset with 52 raw columns mixing customer, product, and financial data at mixed granularity, making focused operational queries impossible.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Kimball Star Schema decomposed the flat file into Fact_OrderItems + Dim_Customer + Dim_Product. Several high-volume categories operate at a net loss once shipping delays are factored in.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">Power BI</span>
-            <span class="proj-tool">Power Query (M)</span>
-            <span class="proj-tool">DAX</span>
-            <span class="proj-tool">Star Schema</span>
-          </div>
-        </div>
-
-        <!-- FDA Drug Recall - Data Acquisition -->
-        <div class="proj-card reveal" data-delay="3" data-tags="python">
-          <div class="proj-card-top">
-            <span class="proj-module">1.1 · Data Acquisition</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/01_data_acquisition/1_1_openfda_api" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>FDA Drug Recall — API Data Pipeline</h4>
-          <p class="proj-problem">Compliance officers were manually checking the FDA website daily, a slow and unauditable process with no way to catch patterns across manufacturers or build any kind of historical trend view.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Python script pulls live recall data from the OpenFDA API, standardizes inconsistent field formats, and writes a clean, structured dataset ready for analysis. Fully automated and repeatable.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">Python</span>
-            <span class="proj-tool">OpenFDA API</span>
-            <span class="proj-tool">Pandas</span>
-            <span class="proj-tool">Requests</span>
-          </div>
-        </div>
-
-        <div class="proj-card reveal" data-delay="1" data-tags="python">
-          <div class="proj-card-top">
-            <span class="proj-module">1.2 · Data Acquisition</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/01_data_acquisition/1_2_legacy_crm_db" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>Legacy CRM Extraction &amp; Ghost Revenue Detection</h4>
-          <p class="proj-problem">A business relied on a 15-year-old CRM database that had never been properly audited. Extracting it for a modern warehouse migration required chunked batching to avoid locking production tables. The bigger problem: nobody knew how much revenue in the system was tied to deleted or missing customer profiles.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>A deliberate LEFT JOIN strategy at extraction time trapped hundreds of "ghost orders" — transactions with no valid customer ID. The audit immediately exposed: 16 state variations across an 8-state sales territory, time-traveler customer creation dates (including legacy default of 1900-01-01), and quantified exactly how much historical revenue was unverifiable.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">Python</span>
-            <span class="proj-tool">SQL</span>
-            <span class="proj-tool">PostgreSQL</span>
-            <span class="proj-tool">Data Profiling</span>
-          </div>
-        </div>
-
-        <div class="proj-card reveal" data-delay="2" data-tags="python">
-          <div class="proj-card-top">
-            <span class="proj-module">2.1 · Data Cleaning</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/02_data_cleaning/2_1_python_pandas" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>Python &amp; Pandas — Structuring FDA Recall Text</h4>
-          <p class="proj-problem">FDA drug recall data arrives with the most critical field — "Reason for Recall" — as an inconsistent paragraph of legal text. A compliance director cannot filter, aggregate, or build risk models against unstructured paragraphs. The raw government API output was analytically useless until categorized.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Built a Regex keyword mapping dictionary to scan raw text for compliance terms, non-destructively engineering a clean recall_category column alongside the original. Just five root cause categories account for over 85% of all recorded drug recalls. Labeling errors are the most frequent failure point; sterility issues are rare but consistently affect the largest batch sizes when they occur.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">Python</span>
-            <span class="proj-tool">Pandas</span>
-            <span class="proj-tool">Regex</span>
-            <span class="proj-tool">EDA</span>
-          </div>
-        </div>
-
-        <div class="proj-card reveal" data-delay="3" data-tags="sql">
-          <div class="proj-card-top">
-            <span class="proj-module">2.2 · Data Cleaning</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/02_data_cleaning/2_2_sql_tsql" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>T-SQL CRM Cleaning &amp; Silver Layer Standardization</h4>
-          <p class="proj-problem">The legacy CRM extraction exposed 15 years of accumulated data debt: orphaned "ghost" orders with no customer, 16 distinct state variations across an 8-state territory, and impossible system default dates. Feeding this raw data into BI dashboards would produce inflated revenue, broken regional maps, and misleading year-over-year trends.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Built non-destructive SQL Views rather than running irreversible UPDATE/DELETE statements, preserving the historical audit trail. A TRY_CAST firewall safely handles type mismatches without crashing the pipeline. CASE standardization collapsed 16 fragmented state entries into the correct 8 operational territories, and ghost revenue was quarantined from all financial models.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">T-SQL</span>
-            <span class="proj-tool">SQL Server</span>
-            <span class="proj-tool">Data Views</span>
-            <span class="proj-tool">Standardization</span>
-          </div>
-        </div>
-
-        <!-- FDA Drug Recall - Risk Analysis -->
-        <div class="proj-card reveal" data-delay="1" data-tags="python">
-          <div class="proj-card-top">
-            <span class="proj-module">3.1 · Feature Engineering</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/03_data_transformation/3_1_python_pandas" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>FDA Drug Recall — Risk Classification & Analysis</h4>
-          <p class="proj-problem">The raw recall data had no risk scoring, no root-cause classification, and no way to identify which manufacturers or product categories were driving the most serious safety failures.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Regex-based root-cause tagging across 5 failure categories covers 85%+ of all recalls. A Gold-layer risk matrix surfaces the highest-risk manufacturers. Operational lag analysis flags transparency failures.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">Python</span>
-            <span class="proj-tool">Pandas</span>
-            <span class="proj-tool">Regex</span>
-            <span class="proj-tool">NumPy</span>
-          </div>
-        </div>
-
-        <!-- SQL RFM Segmentation -->
-        <div class="proj-card reveal" data-delay="1" data-tags="sql">
-          <div class="proj-card-top">
-            <span class="proj-module">3.2 · Customer Analytics</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/03_data_transformation/3_2_sql_kpi_aggregation" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>SQL RFM Customer Segmentation</h4>
-          <p class="proj-problem">A business spending equally on all customers to retain them with no behavioral segmentation to identify which accounts were truly at risk of churning vs. which were safely loyal.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Window functions identified 23 high-value customers with dangerously low recent activity. They looked fine in aggregate but were quietly slipping away. Precision win-back campaigns replace mass marketing.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">SQL Server</span>
-            <span class="proj-tool">T-SQL</span>
-            <span class="proj-tool">NTILE</span>
-            <span class="proj-tool">CTEs</span>
-          </div>
-        </div>
-
-        <!-- R Statistical Transformation -->
-        <div class="proj-card reveal" data-delay="2" data-tags="">
-          <div class="proj-card-top">
-            <span class="proj-module">2.4 · Data Cleaning</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/02_data_cleaning/2_4_r_cleaning" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>Domain-Driven Device Data Cleaning (R)</h4>
-          <p class="proj-problem">A used-device marketplace prices devices algorithmically, but the raw dataset contained physically impossible hardware specs — RAM exceeding storage, pre-2015 devices tagged with 2022-era storage capacities, front cameras with higher megapixels than rear cameras. Any model trained on this data would produce nonsensical prices.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Built domain-specific logic filters in R/Tidyverse catching hardware impossibilities by type. Smart grouped imputation filled missing battery capacity by Brand and Release Year rather than dataset-wide averages, preserving hardware generation context. Visual safety loops in ggplot2 confirmed each transformation before proceeding.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">R</span>
-            <span class="proj-tool">Tidyverse</span>
-            <span class="proj-tool">ggplot2</span>
-            <span class="proj-tool">Data Validation</span>
-          </div>
-        </div>
-
-        <div class="proj-card reveal" data-delay="3" data-tags="">
-          <div class="proj-card-top">
-            <span class="proj-module">3.3 · Statistical Transformation</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/03_data_transformation/3_3_r_statistical_transformation" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>R Statistical Engineering — Device Value Modeling</h4>
-          <p class="proj-problem">Raw hardware specs like battery capacity and RAM exist on completely different numerical scales. A 2015 flagship phone cannot be directly compared to a 2022 budget device without mathematical normalization. Feeding raw numbers into a pricing model would systematically overprice outdated premium hardware and underprice efficient modern budget devices.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Applied log10 transformation to normalize the heavily right-skewed price distribution into a regression-ready bell curve. Z-scored all hardware specs to enable cross-dimension comparison. Engineered a Battery Density ratio (mAh per gram) that revealed mid-tier brands consistently outperform flagship brands on physical efficiency.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">R</span>
-            <span class="proj-tool">Tidyverse</span>
-            <span class="proj-tool">Statistical Scaling</span>
-            <span class="proj-tool">Feature Engineering</span>
-          </div>
-        </div>
-
-        <!-- Citibike 1.3 — CSV Acquisition -->
-        <div class="proj-card reveal" data-delay="3" data-tags="python">
-          <div class="proj-card-top">
-            <span class="proj-module">1.3 · Data Acquisition</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/01_data_acquisition/1_3_frankenfile_csv" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>Citibike "Frankenfile" CSV Acquisition</h4>
-          <p class="proj-problem">A backend system migration in 2021 broke the Citibike station ID schema. Pre and post-migration export files used completely different ID formats, making them impossible to combine without first understanding what had changed.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Diagnosed the schema break by comparing old and new export structures side by side. Built a Python extraction script that pulled and labelled both file formats correctly before passing them downstream for cleaning.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">Python</span>
-            <span class="proj-tool">Pandas</span>
-            <span class="proj-tool">CSV Parsing</span>
-          </div>
-        </div>
-
-        <!-- Citibike 2.3 — Power Query Cleaning -->
-        <div class="proj-card reveal" data-delay="1" data-tags="powerbi">
-          <div class="proj-card-top">
-            <span class="proj-module">2.3 · Data Cleaning</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/02_data_cleaning/2_3_power_query" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>Power Query M — Schema Repair & Cleaning</h4>
-          <p class="proj-problem">The two incompatible Citibike export files needed to be reconciled into a single clean dataset before any Power BI relationship could be built. Neither file alone was usable, and a naive merge would have produced false trip counts.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Power Query M code performed a double-merge translation — matching stations across both schemas via a lookup bridge table. The resulting unified file had zero orphaned station IDs and was ready for dimensional modeling.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">Power Query (M)</span>
-            <span class="proj-tool">Power BI</span>
-            <span class="proj-tool">Data Validation</span>
-          </div>
-        </div>
-
-        <!-- Citibike 3.4 — Power BI Modeling -->
-        <div class="proj-card reveal" data-delay="2" data-tags="powerbi">
-          <div class="proj-card-top">
-            <span class="proj-module">3.4 · Data Transformation</span>
-            <a href="https://github.com/rishisanmitra/Data-Analytics-Portfolio/tree/main/03_data_transformation/3_4_power_bi_modeling" target="_blank" rel="noopener" class="proj-gh-link">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-          </div>
-          <h4>Citibike Power BI Star Schema & DAX Modeling</h4>
-          <p class="proj-problem">The cleaned Citibike flat file had no dimensional structure, which meant Power BI could not run time-intelligence queries or filter efficiently by station, borough, or hour without full table scans on 500K+ rows.</p>
-          <div class="proj-insight"><span class="proj-insight-icon">💡</span>Decomposed the flat file into Fact_Trips, Dim_Station, and Dim_Date. VertiPaq compression reduced storage by 60%. 15 stations accounted for 70% of peak-hour volume, completely reshaping the rebalancing strategy recommendation.</div>
-          <div class="proj-tools">
-            <span class="proj-tool">Power BI</span>
-            <span class="proj-tool">DAX</span>
-            <span class="proj-tool">Star Schema</span>
-            <span class="proj-tool">VertiPaq</span>
           </div>
         </div>
 
